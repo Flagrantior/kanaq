@@ -2,7 +2,6 @@
 Bash script for train your japanese kana knowledge.
 ```diff
 > kanaq
-
    A I U E O	A I U E O
    あいうえお	アイウエオ
 gK かきくけこ	カキクケコ
@@ -16,23 +15,22 @@ dT たちつてと	タチツテト
  R らりるれろ	ラリルレロ
  W わゐ  ゑを	ワヰ  ヱヲ
 
-kG ががぐげご	ガギグゲゴ
+kG がぎぐげご	ガギグゲゴ
 sZ ざじずぜぞ	ザジズゼゾ
 tD だぢづでど	ダヂヅデド
 hB ばびぶべぼ	バビブベボ
 hP ぱぴぷぺぽ	パピプペポ
+   A I U E O	A I U E O
 
- 1) あ	hiragana
- 2) ア	katakana
- 3) が	hiragana [han]dakuten
- 4) ガ	katakana [han]dakuten
- 5) きゃ	hiragana yōon
- 6) キャ	katakana yōon
- 7) ぎゃ	hiragana [han]dakuten yōon
- 8) ギャ	katakana [han]dakuten yōon
-Kana to use (eg: 1357): 1
-し	shi
-+	shi
-じ	zi
--	ji
+Pairs しシmode? [Y/n]: y
+
+ 1) し  シ	kana
+ 2) じ  ジ	kana [han]dakuten
+ 3) しゃシャ	kana yōon
+ 4) じゃジャ	kana [han]dakuten yōon
+Kana to use (eg: 12): 12
+かカ ka
++   ka
+じジ zi
+-   ji
 ```
