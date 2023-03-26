@@ -21,6 +21,7 @@ sZ ざじずぜぞ  ザジズゼゾ
 tD だぢづでど  ダヂヅデド
 hB ばびぶべぼ  バビブベボ
 hP ぱぴぷぺぽ  パピプペポ
+   A I U E O   A I U E O
 
 Pairs しシmode? [Y/n]: "
 read ispairs
@@ -94,7 +95,7 @@ if [[ $charsets == *8* ]]; then charset+=(${katakana_dakuten_yoon[@]}); fi
  2) じ  ジ   kana [han]dakuten
  3) しゃシャ kana yōon
  4) じゃジャ kana [han]dakuten yōon
-Kana to use (eg: 13): "
+Kana to use (eg: 12): "
 read charsets
 
 kana=(
