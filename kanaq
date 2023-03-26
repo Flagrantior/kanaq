@@ -8,7 +8,7 @@ printf "\
  4) ガ   katakana [han]dakuten
  5) きゃ hiragana yōon
  6) キャ katakana yōon
- 7) ぎャ hiragana [han]dakuten yōon
+ 7) ぎゃ hiragana [han]dakuten yōon
  8) ギャ katakana [han]dakuten yōon
 Kana to use (eg: 1357): "
 read charsets
