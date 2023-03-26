@@ -1,7 +1,8 @@
 #!/bin/bash
+# flagrantior@gmail.com
 # Script for train your japanese kana knowledge
 
-printf "
+printf "\
    A I U E O   A I U E O
    あいうえお  アイウエオ
 gK かきくけこ  カキクケコ
@@ -15,88 +16,69 @@ dT たちつてと  タチツテト
  R らりるれろ  ラリルレロ
  W わゐ  ゑを  ワヰ  ヱヲ
 
-kG ががぐげご  ガギグゲゴ
+kG がぎぐげご  ガギグゲゴ
 sZ ざじずぜぞ  ザジズゼゾ
 tD だぢづでど  ダヂヅデド
 hB ばびぶべぼ  バビブベボ
 hP ぱぴぷぺぽ  パピプペポ
 
- 1) あ   hiragana
- 2) ア   katakana
- 3) が   hiragana [han]dakuten
- 4) ガ   katakana [han]dakuten
- 5) きゃ hiragana yōon
- 6) キャ katakana yōon
- 7) ぎゃ hiragana [han]dakuten yōon
- 8) ギャ katakana [han]dakuten yōon
+Pairs しシmode? [Y/n]: "
+read ispairs
+
+declare -a charset
+
+case "$ispairs" in [nN])
+	printf "
+ 1) し   hiragana
+ 2) シ   katakana
+ 3) じ   hiragana [han]dakuten
+ 4) ジ   katakana [han]dakuten
+ 5) しゃ hiragana yōon
+ 6) シャ katakana yōon
+ 7) じゃ hiragana [han]dakuten yōon
+ 8) ジャ katakana [han]dakuten yōon
 Kana to use (eg: 1357): "
 read charsets
 
 hiragana=(
-あ a い i う u え e お o
-か ka き ki く ku け ke こ ko
-さ sa し shi す su せ se そ so
-た ta ち chi つ tsu て te と to
+あ a い i う u え e お o か ka き ki く ku け ke こ ko
+さ sa し shi す su せ se そ so た ta ち chi つ tsu て te と to
 な na に ni ぬ nu ね ne の no ん n
-は ha ひ hi ふ fu へ he ほ ho
-ま ma み mi む mu め me も mo
-や ya ゆ yu よ yo
-ら ra り ri る ru れ re ろ ro
-わ wa ゐ wi ゑ we を wo
-) katakana=(
-ア a イ i ウ u エ e オ o
-カ ka キ ki ク ku ケ ke コ ko
-サ sa シ shi ス su セ se ソ so
-タ ta チ chi ツ tsu テ te ト to
+は ha ひ hi ふ fu へ he ほ ho ま ma み mi む mu め me も mo
+や ya ゆ yu よ yo ら ra り ri る ru れ re ろ ro わ wa ゐ wi ゑ we を wo)
+katakana=(
+ア a イ i ウ u エ e オ o カ ka キ ki ク ku ケ ke コ ko
+サ sa シ shi ス su セ se ソ so タ ta チ chi ツ tsu テ te ト to
 ナ na ニ ni ヌ nu ネ ne ノ no ン n
-ハ ha ヒ hi フ fu ヘ he ホ ho
-マ ma ミ mi ム mu メ me モ mo
-ヤ ya ユ yu ヨ yo
-ラ ra リ ri ル ru レ re ロ ro
-ワ wa ヰ wi ヱ we ヲ wo
-) hiragana_dakuten=(
-が ga が gi ぐ gu げ ge ご go
-ざ za じ ji ず zu ぜ ze ぞ zo
-だ da ぢ di づ dzu で de ど do
-ば ba び bi ぶ bu べ be ぼ bo
-ぱ pa ぴ pi ぷ pu ぺ pe ぽ po
-) katakana_dakuten=(
-ガ ga ギ gi グ gu ゲ ge ゴ go
-ザ za ジ ji ズ zu ゼ ze ゾ zo
-ダ da ヂ di ヅ dzu デ de ド do
-バ ba ビ bi ブ bu ベ be ボ bo
-パ pa ピ pi プ pu ペ pe ポ po
-) hiragana_yoon=(
-きゃ kya きゅ kyu きょ kyo
-しゃ sha しゅ shu しょ sho
-ちゃ cha ちゅ chu ちょ cho
-にゃ nya にゅ nyu にょ nyo
-ひゃ hya ひゅ hyu ひょ hyo
-みゃ mya みゅ myu みょ myo
-りゃ rya りゅ ryu りょ ryo
-) hiragana_dakuten_yoon=(
-ぎゃ gya ぎゅ gyu ぎょ gyo
-じゃ ja じゅ ju じょ jo
-ぢゃ dya ぢゅ dyu ぢょ dyo
-びゃ bya びゅ byu びょ byo
-ぴゃ pya ぴゅ pyu ぴょ pyo
-) katakana_yoon=(
-キャ kya キュ kyu キョ kyo
-シャ sha シュ shu ショ sho
-チャ cha チュ chu チョ cho
-ニャ nya ニュ nyu ニョ nyo
-ヒャ hya ヒュ hyu ヒョ hyo
-ミャ mya ミュ myu ミョ myo
-リャ rya リュ ryu リョ ryo
-) katakana_dakuten_yoon=(
-ギャ gya ギュ gyu ギョ gyo
-ジャ ja ジュ ju ジョ jo
-ヂャ dya ヂュ dyu ヂョ dyo
-ビャ bya ビュ byu ビョ byo
-ピャ pya ピュ pyu ピョ pyo
-)
+ハ ha ヒ hi フ fu ヘ he ホ ho マ ma ミ mi ム mu メ me モ mo
+ヤ ya ユ yu ヨ yo ラ ra リ ri ル ru レ re ロ ro ワ wa ヰ wi ヱ we ヲ wo)
+hiragana_dakuten=(
+が ga ぎ gi ぐ gu げ ge ご go ざ za じ ji ず zu ぜ ze ぞ zo
+だ da ぢ di づ dzu で de ど 'do' ば ba び bi ぶ bu べ be ぼ bo
+ぱ pa ぴ pi ぷ pu ぺ pe ぽ po)
+katakana_dakuten=(
+ガ ga ギ gi グ gu ゲ ge ゴ go ザ za ジ ji ズ zu ゼ ze ゾ zo
+ダ da ヂ di ヅ dzu デ de ド 'do' バ ba ビ bi ブ bu ベ be ボ bo
+パ pa ピ pi プ pu ペ pe ポ po)
+hiragana_yoon=(
+きゃ kya きゅ kyu きょ kyo しゃ sha しゅ shu しょ sho
+ちゃ cha ちゅ chu ちょ cho にゃ nya にゅ nyu にょ nyo
+ひゃ hya ひゅ hyu ひょ hyo みゃ mya みゅ myu みょ myo
+りゃ rya りゅ ryu りょ ryo)
+hiragana_dakuten_yoon=(
+ぎゃ gya ぎゅ gyu ぎょ gyo じゃ ja じゅ ju じょ jo
+ぢゃ dya ぢゅ dyu ぢょ dyo びゃ bya びゅ byu びょ byo
+ぴゃ pya ぴゅ pyu ぴょ pyo)
+katakana_yoon=(
+キャ kya キュ kyu キョ kyo シャ sha シュ shu ショ sho
+チャ cha チュ chu チョ cho ニャ nya ニュ nyu ニョ nyo
+ヒャ hya ヒュ hyu ヒョ hyo ミャ mya ミュ myu ミョ myo
+リャ rya リュ ryu リョ ryo)
+katakana_dakuten_yoon=(
+ギャ gya ギュ gyu ギョ gyo ジャ ja ジュ ju ジョ jo
+ヂャ dya ヂュ dyu ヂョ dyo ビャ bya ビュ byu ビョ byo
+ピャ pya ピュ pyu ピョ pyo)
 
-declare -a charset
 if [[ $charsets == *1* ]]; then charset+=(${hiragana[@]}); fi
 if [[ $charsets == *2* ]]; then charset+=(${katakana[@]}); fi
 if [[ $charsets == *3* ]]; then charset+=(${hiragana_dakuten[@]}); fi
@@ -105,6 +87,43 @@ if [[ $charsets == *5* ]]; then charset+=(${hiragana_yoon[@]}); fi
 if [[ $charsets == *6* ]]; then charset+=(${katakana_yoon[@]}); fi
 if [[ $charsets == *7* ]]; then charset+=(${hiragana_dakuten_yoon[@]}); fi
 if [[ $charsets == *8* ]]; then charset+=(${katakana_dakuten_yoon[@]}); fi
+	;;
+*)
+	printf "
+ 1) し  シ   kana
+ 2) じ  ジ   kana [han]dakuten
+ 3) しゃシャ kana yōon
+ 4) じゃジャ kana [han]dakuten yōon
+Kana to use (eg: 13): "
+read charsets
+
+kana=(
+あア a いイ i うウ u えエ e おオ o かカ ka きキ ki くク ku けケ ke こコ ko
+さサ sa しシ shi すス su せセ se そソ so たタ ta ちチ chi つツ tsu てテ te とト to
+なナ na にニ ni ぬヌ nu ねネ ne のノ no んン n
+はハ ha ひヒ hi ふフ fu へヘ he ほホ ho まマ ma みミ mi むム mu めメ me もモ mo
+やヤ ya ゆユ yu よヨ yo らラ ra りリ ri るル ru れレ re ろロ ro わワ wa ゐヰ wi ゑヱ we をヲ wo)
+kana_dakuten=(
+がガ ga ぎギ gi ぐグ gu げゲ ge ごゴ go ざザ za じジ ji ずズ zu ぜゼ ze ぞゾ zo
+だダ da ぢヂ di づヅ dzu でデ de どド 'do' ばバ ba びビ bi ぶブ bu べベ be ぼボ bo
+ぱパ pa ぴピ pi ぷプ pu ぺペ pe ぽポ po)
+kana_yoon=(
+きゃキャ kya きゅキュ kyu きょキョ kyo しゃシャ sha しゅシュ shu しょショ sho
+ちゃチャ cha ちゅチュ chu ちょチョ cho にゃニャ nya にゅニュ nyu にょニョ nyo
+ひゃヒャ hya ひゅヒュ hyu ひょヒョ hyo みゃミャ mya みゅミュ myu みょミョ myo
+りゃリャ rya りゅリュ ryu りょリョ ryo)
+kana_dakuten_yoon=(
+ぎゃギャ gya ぎゅギュ gyu ぎょギョ gyo じゃジャ ja じゅジュ ju じょジョ jo
+ぢゃヂャ dya ぢゅヂュ dyu ぢょヂョ dyo びゃビャ bya びゅビュ byu びょビョ byo
+ぴゃピャ pya ぴゅピュ pyu ぴょピョ pyo)
+
+if [[ $charsets == *1* ]]; then charset+=(${kana[@]}); fi
+if [[ $charsets == *2* ]]; then charset+=(${kana_dakuten[@]}); fi
+if [[ $charsets == *3* ]]; then charset+=(${kana_yoon[@]}); fi
+if [[ $charsets == *4* ]]; then charset+=(${kana_dakuten_yoon[@]}); fi
+	;;
+esac
+
 
 GREEN="\033[0;32m"
 RED="\033[0;31m"
