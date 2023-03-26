@@ -1,7 +1,27 @@
 # カナック Kanaq
 Bash script for train your japanese kana knowledge.
 ```diff
-> kanaq 
+> kanaq
+
+   A I U E O	A I U E O
+   あいうえお	アイウエオ
+gK かきくけこ	カキクケコ
+zS さしすせそ	サシスセソ
+dT たちつてと	タチツテト
+ N なにぬねのん	ナニヌネノン
+βH はひふへほ	ハヒフヘホ
+ M まみむめも	マミムメモ
+ Y や  ゆ  よ	ヤ  ユ  ヨ
+   ゃ  ゅ  ょ	ャ  ュ  ョ
+ R らりるれろ	ラリルレロ
+ W わゐ  ゑを	ワヰ  ヱヲ
+
+kG ががぐげご	ガギグゲゴ
+sZ ざじずぜぞ	ザジズゼゾ
+tD だぢづでど	ダヂヅデド
+hB ばびぶべぼ	バビブベボ
+hP ぱぴぷぺぽ	パピプペポ
+
  1) あ	hiragana
  2) ア	katakana
  3) が	hiragana [han]dakuten
