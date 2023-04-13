@@ -28,10 +28,10 @@ read ispairs
 
 declare -a charset
 
-case "$ispairs" in [nN])
-	printf "
- 1) し   hiragana
- 2) シ   katakana
+case "$ispairs" in
+[nN]) printf "
+ 1) し   hiragana (default)
+ 2) シ   katakana (default)
  3) じ   hiragana [han]dakuten
  4) ジ   katakana [han]dakuten
  5) しゃ hiragana yōon
@@ -80,8 +80,8 @@ katakana_dakuten_yoon=(
 ヂャ dya ヂュ dyu ヂョ dyo ビャ bya ビュ byu ビョ byo
 ピャ pya ピュ pyu ピョ pyo)
 
-if [[ $charsets == *1* ]]; then charset+=(${hiragana[@]}); fi
-if [[ $charsets == *2* ]]; then charset+=(${katakana[@]}); fi
+if [[ $charsets == *1* ]] || [[ ${#charsets} == 0 ]]; then charset+=(${hiragana[@]}); fi
+if [[ $charsets == *2* ]] || [[ ${#charsets} == 0 ]]; then charset+=(${katakana[@]}); fi
 if [[ $charsets == *3* ]]; then charset+=(${hiragana_dakuten[@]}); fi
 if [[ $charsets == *4* ]]; then charset+=(${katakana_dakuten[@]}); fi
 if [[ $charsets == *5* ]]; then charset+=(${hiragana_yoon[@]}); fi
@@ -89,9 +89,9 @@ if [[ $charsets == *6* ]]; then charset+=(${katakana_yoon[@]}); fi
 if [[ $charsets == *7* ]]; then charset+=(${hiragana_dakuten_yoon[@]}); fi
 if [[ $charsets == *8* ]]; then charset+=(${katakana_dakuten_yoon[@]}); fi
 	;;
-*)
-	printf "
- 1) し  シ   kana
+
+*) printf "
+ 1) し  シ   kana (default)
  2) じ  ジ   kana [han]dakuten
  3) しゃシャ kana yōon
  4) じゃジャ kana [han]dakuten yōon
@@ -118,7 +118,7 @@ kana_dakuten_yoon=(
 ぢゃヂャ dya ぢゅヂュ dyu ぢょヂョ dyo びゃビャ bya びゅビュ byu びょビョ byo
 ぴゃピャ pya ぴゅピュ pyu ぴょピョ pyo)
 
-if [[ $charsets == *1* ]]; then charset+=(${kana[@]}); fi
+if [[ $charsets == *1* ]] || [[ ${#charsets} == 0 ]]; then charset+=(${kana[@]}); fi
 if [[ $charsets == *2* ]]; then charset+=(${kana_dakuten[@]}); fi
 if [[ $charsets == *3* ]]; then charset+=(${kana_yoon[@]}); fi
 if [[ $charsets == *4* ]]; then charset+=(${kana_dakuten_yoon[@]}); fi
@@ -143,4 +143,3 @@ while true; do
 			printf "  ${RED}-$answer${NC}\n"
 	fi
 done
-
