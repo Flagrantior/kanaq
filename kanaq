@@ -2,7 +2,7 @@
 # flagrantior@gmail.com
 # Script for train your japanese kana knowledge
 
-printf "\
+alpha="\
    A I U E O   A I U E O
    あいうえお  アイウエオ
 gK かきくけこ  カキクケコ
@@ -21,11 +21,15 @@ sZ ざじずぜぞ  ザジズゼゾ
 tD だぢづでど  ダヂヅデド
 hB ばびぶべぼ  バビブベボ
 hP ぱぴぷぺぽ  パピプペポ
-   A I U E O   A I U E O
+   A I U E O   A I U E O"
 
-Pairs しシmode? [Y/n]: "
+printf "\n$alpha\n
+Space/Enter - Pass
+          ? - Hint
+
+Pairs しシmode? [Y/n] "
+
 read ispairs
-
 declare -a charset
 
 case "$ispairs" in
@@ -128,18 +132,38 @@ esac
 
 GREEN="\033[0;32m"
 RED="\033[0;31m"
+REDBG="\033[0;41m"
 NC="\033[0m"
+
+function checkChar {
+	read -sn 1 guesschar
+	case $guesschar in
+		'?')
+			printf "\n\n$alpha\n\n${charset[$charnum]} "
+			guess='' ;;
+		[a-z])
+			if [[ $guesschar == ${answer:${#guess}:1} ]]
+				then
+					guess+=$guesschar
+					printf "${GREEN}$guesschar${NC}"
+					[[ $guess == $answer ]] && return
+				else
+					printf "${RED}$guesschar${NC}"
+					tput cub1
+			fi ;;
+		'')
+			printf "\n  ${REDBG}$answer${NC}"
+			return ;;
+	esac
+	checkChar
+}
 
 while true; do
 	let "randnum = $RANDOM"
 	let "charnum = $randnum % ${#charset[*]} - $randnum % ${#charset[*]} % 2"
 	answer=${charset[$charnum+1]}
-	printf "${charset[$charnum]} "
-	read guess
-	if [[ $guess == $answer ]]
-		then
-			printf "  ${GREEN}+$answer${NC}\n"
-		else
-			printf "  ${RED}-$answer${NC}\n"
-	fi
+	guess=''
+	printf "\n${charset[$charnum]} "
+
+	checkChar
 done
